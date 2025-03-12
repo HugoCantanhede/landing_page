@@ -1,10 +1,10 @@
 /* 
 ==================
 Estilização global
-====================
+==================
 */
 
-body{
+body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #f7f7f7;
     display: grid;
@@ -14,39 +14,49 @@ body{
     margin-top: 60px;
 }
 
-p{
-    font-size: 20px;   /* tamano da fonte dos paragrafos de 16 para 20 */
+p {
+    font-size: 20px;
 }
 
 a {
-    text-decoration: none; /*tira qualquer decoração do link*/
+    text-decoration: none;
 }
 
-img{
-    max-width: 100%; /*evita que o overflow da imagem, a img ocupa 100% do elemento pai*/
-    display: block; /* faz com que a imagem se comporte sempre coo um bloco, ou seja do inicio ou aim do container
-}
-li{
-    list-style: none; /*tira as bolinhas da lista*/
+img {
+    max-width: 100%;
+    display: block;
 }
 
-p, h1, h2, h3{
+li {
+    list-style: none;
+}
+
+p, h1, h2, h3 {
     margin: 0px;
 }
-.menu{
-    display: flex; /*alinha os elementos na horizontal*/
-    gap: 20px; /*espaco entre os elementos*/
+
+/* 
+==================
+Menu
+==================
+*/
+
+.menu {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* Permite que os itens quebrem para uma nova linha */
+    justify-content: center; /* Centraliza o menu */
 }
 
-.menu a{
+.menu a {
     background-color: #ffffff;
-    padding: 15px 30px; /*espaco interno, quando utilizamos o ataçho padding com dois valores, o primeiro representa o espaco de cima/baixo e o segundo representa o espaco de esqueda/direita*/
-    border-radius: 4px; /* arredondamento das bordas*/
-    color:black;
-    text-transform: uppercase; /*transforma o texto em maiusculo*/
+    padding: 15px 30px;
+    border-radius: 4px;
+    color: black;
+    text-transform: uppercase;
 }
 
-.menu a:hover{
+.menu a:hover {
     background-color: #ee2211;
     color: #ffffff;
 }
@@ -55,37 +65,37 @@ p, h1, h2, h3{
 ========================
 Estilização do conteúdo  
 ========================
-
 */
 
-.conteudo{
+.conteudo {
     display: grid;
     grid-template-columns: 1fr 1fr;
     max-width: 1000px;
-}
-
-.introducao{
-    background-color: #ffffff;
-    padding: 40px;
-    text-align: right;
-    display: grid;
-    align-content: center;
-    justify-items: center;
     gap: 20px;
 }
-.subtitulo{
+
+.introducao {
+    background-color: #ffffff;
+    padding: 40px;
+    text-align: center;
+    display: grid;
+    align-content: center;
+    gap: 20px;
+}
+
+.subtitulo {
     font-size: 64px;
-    text-transform: uppercase;    
+    text-transform: uppercase;
     padding: 40px;
     color: rgba(0, 0, 0, 0.2);
-    text-align: end;
+    text-align: center;
     align-self: center;
 }
 
-.botao{
+.botao {
     background-color: #ee2211;
     color: #ffffff;
-    padding: 15px 30px; 
+    padding: 15px 30px;
     text-transform: uppercase;
     border-radius: 4px;
 }
@@ -94,22 +104,21 @@ Estilização do conteúdo
 ========================
 Estilização das Vantagens  
 ========================
-
 */
 
-.vantagens{
+.vantagens {
     background-color: #ffffff;
     padding: 40px;
 }
 
-.vantagens-item{
+.vantagens-item {
     display: grid;
-    grid-template-columns: auto  1fr;
+    grid-template-columns: auto 1fr;
     gap: 10px 20px;
     padding: 20px;
 }
 
-.vantagens-item p{
+.vantagens-item p {
     grid-column: 2;
 }
 
@@ -117,14 +126,116 @@ Estilização das Vantagens
 ========================
 Estilização do Rodapé  
 ========================
-
 */
 
-.rodape{
+.rodape {
     background-color: #ffffff;
     color: #000000;
     text-align: center;
     padding: 40px 0;
-    width: 100%; /*faz com que o elemento atual fique 100% do tamnaho do elemento pai (você não está utilizando o display)*/
+    width: 100%;
     box-sizing: border-box;
+}
+
+/* 
+========================
+Responsividade  
+========================
+*/
+
+/* Telas menores que 800px */
+@media (max-width: 800px) {
+    .conteudo {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .subtitulo {
+        font-size: 48px;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .menu a {
+        padding: 10px 20px;
+    }
+}
+
+/* Telas menores que 600px */
+@media (max-width: 600px) {
+    body {
+        gap: 40px;
+        margin-top: 40px;
+    }
+
+    .introducao {
+        padding: 20px;
+    }
+
+    .botao {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .vantagens-item {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    img {
+        display: none; /* Esconde a imagem em telas muito pequenas */
+    }
+}
+/* Menu padrão */
+.menu {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Esconde o botão em telas grandes */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Responsividade: Menu Hamburguer */
+@media (max-width: 800px) {
+    .menu {
+        display: none; /* Esconde o menu inicialmente */
+        flex-direction: column;
+        background: white;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+
+    .menu a {
+        display: block;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .menu-toggle {
+        display: block; /* Exibe o botão */
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    /* Mostra o menu quando ativo */
+    .menu.active {
+        display: flex;
+    }
 }
